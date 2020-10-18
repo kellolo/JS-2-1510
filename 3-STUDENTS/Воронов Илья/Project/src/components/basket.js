@@ -1,5 +1,5 @@
 //
-const basket = {
+export default {
     items: [],
     containerBasket: null,
     url: 'https://raw.githubusercontent.com/IlyaVoronOFF/JSON/master/Brand/basket.json',
@@ -73,7 +73,7 @@ const basket = {
     }
 }
 
-basket.init();
+//basket.init();
 //
 
 // function createNewItem(name, price) {

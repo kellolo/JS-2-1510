@@ -2,7 +2,7 @@ const NAMES = ['Mango People T-Shirt', 'Banana People T-Shirt', 'Strawberry Peop
 const PRICES = [52, 53, 55, 67, 69, 94, 23, 45, 55];
 
 //
-const catalog = {
+export default {
     items: [],
     container: null,
     imgFTPurl: 'https://raw.githubusercontent.com/IlyaVoronOFF/pictureStatic/master/Brand/catalog/',
@@ -33,7 +33,7 @@ const catalog = {
     }
 }
 
-catalog.init();
+//catalog.init();
 //
 
 function createNewItem(name, price) {
