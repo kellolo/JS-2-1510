@@ -28,11 +28,22 @@ export default {
         document.querySelector('#toggle-basket').addEventListener('click', () => {
             this.wrapper.classList.toggle('hidden');
         });
+        /*
+        document.addEventListener('click', (e) => {
+            if(e.target.id != 'header__cart-img' && e.target.parentNode.class !== 'drop-cart' &&!document.querySelector('.drop-cart').classList.contains('hidden')) {
+                //this.wrapper.classList.add('hidden');
+                console.log(e.target.parentNode)
+            };
+        });
+        /*document.querySelector('body').addEventListener('click', () => {
+            this.wrapper.classList.toggle('hidden');
+        }); */
         this.container.addEventListener('click', e => {
             if (e.target.name == 'remove') {
                 this.remove(e.target.dataset.id)
             }
-        })
+        }) 
+
     },
     add(item) {
         let find = this.items.find(basketItem => basketItem.productId == item.productId);
@@ -81,7 +92,7 @@ export default {
         let htmlStr = '';
 				this.items.forEach((item) => {
 					htmlStr += `
-					<div class="drop-cart__product">
+					<form class="drop-cart__product" name="drop-cart-form" >
                             <a href="product.html" class="drop-cart__product-link">
                                 <img src="${item.productImg}" alt="product" class="drop-cart__product-img">
                             </a>
@@ -100,7 +111,7 @@ export default {
                             </div>
                         </div>
                         <a href="#" data-id="${item.productId}"name="remove" class="drop-cart__product-close far fa-times-circle"></a>
-                    </div>
+                    </form>
 					`
                 });
 				this.container.innerHTML = htmlStr;
