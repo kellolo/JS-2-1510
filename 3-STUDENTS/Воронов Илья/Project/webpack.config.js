@@ -18,9 +18,10 @@ module.exports = {
             chunkFilename: '[id].css',
         }),
         new CopyPlugin({
-            patterns: [
-                { from: './src/assets/img', to: './img' },
-            ],
+            patterns: [{
+                from: './src/assets/img',
+                to: './img'
+            }, ],
         }),
     ],
     module: {
