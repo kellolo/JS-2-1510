@@ -11,14 +11,15 @@
 
 <script>
 import { get } from "@/core/requests";
-import Item from "./CatalogItem";
+import Item from "./Item.vue";
 
 export default {
   data() {
     return {
       items: [],
       url:
-        "https://raw.githubusercontent.com/IlyaVoronOFF/JSON/master/Brand/catalog.json",
+        //"https://raw.githubusercontent.com/IlyaVoronOFF/JSON/master/Brand/catalog.json",
+        "/api/catalog",
     };
   },
   components: { Item },

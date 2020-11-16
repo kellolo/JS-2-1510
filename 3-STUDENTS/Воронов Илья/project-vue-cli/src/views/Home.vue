@@ -28,22 +28,7 @@
 
             <div class="head-right">
               <form>
-                <input type="checkbox" id="basket" />
-                <label for="basket">
-                  <img src="@/assets/img/header/cart.png" alt="cart" />
-                  <div class="num-cart"><span>0</span></div>
-                </label>
-                <div class="basket-drop">
-                  <Basket />
-                  <div class="basket-total">
-                    <!-- <p>TOTAL</p>
-                                    <p>$ <output name="result">0</output></p> -->
-                  </div>
-                  <div class="basket-btn">
-                    <button type="submit">Checkout</button>
-                    <button type="reset">Go to cart</button>
-                  </div>
-                </div>
+                <Basket ref="bask" />
               </form>
               <div class="menu-acc">
                 <a href="#" class="account"
