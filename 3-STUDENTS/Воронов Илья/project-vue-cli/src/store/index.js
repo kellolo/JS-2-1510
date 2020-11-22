@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import {get } from "@/core/requests"
+import {get, post, put, deleteReq } from "@/core/requests";
 
 Vue.use(Vuex)
 
@@ -15,12 +15,12 @@ export default new Vuex.Store({
         basket_add: (state, item) => {
             state.basket.push(item);
         },
+        basket_change: (state, payload) => {
+            payload.item.amount += payload.amount;
+        },
         basket_remove: (state, item) => {
             state.basket.splice(state.basket.indexOf(item), 1);
         },
-        basket_change: (state, payload) => {
-            payload.item.amount += payload.amount;
-        }
     },
     actions: {
         async loadBasket({ commit }, url) {
@@ -38,17 +38,29 @@ export default new Vuex.Store({
             switch (payload.action) {
                 case 1:
                     {
-                        commit('basket_add', payload.item);
+                        post('/api/basket', payload.item).then((res) => {
+                            if (res.status) {
+                                commit('basket_add', payload.item);
+                            }
+                        });
                         break;
                     }
                 case 2:
                     {
-                        commit('basket_remove', payload.item);
+                        deleteReq('/api/basket/' + payload.item.productId).then((res) => {
+                            if (res.status) {
+                                commit('basket_remove', payload.item);
+                            }
+                        });
                         break;
                     }
                 case 3:
                     {
-                        commit('basket_change', { item: payload.item, amount: payload.amount });
+                        put('/api/basket/' + payload.item.productId, payload.amount).then((res) => {
+                            if (res.status) {
+                                commit('basket_change', { item: payload.item, amount: payload.amount });
+                            }
+                        });
                         break;
                     }
             }

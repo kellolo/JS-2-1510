@@ -35,7 +35,7 @@
 
 <script>
 import Item from "./Item.vue";
-//import { get } from "@/core/requests";
+//import { get, post, put, deleteReq } from "@/core/requests";
 import { mapGetters } from "vuex";
 
 export default {
@@ -50,25 +50,32 @@ export default {
   },
   components: { Item },
   methods: {
-    add(item) {
-      let find = this.items.find(
-        (basketItem) => basketItem.productId == item.productId
-      );
+    // add(item) {
+    //   let find = this.items.find(
+    //     (basketItem) => basketItem.productId == item.productId
+    //   );
 
-      if (!find) {
-        let newItem = Object.assign({}, item, { amount: 1 });
-        this.$store.dispatch("changeBasketItems", { item: newItem, action: 1 });
-      } else {
-        //find.amount++;
-        this.$store.dispatch("changeBasketItems", {
-          item: find,
-          action: 3,
-          amount: 1,
-        });
-      }
-    },
+    //   if (!find) {
+    //     let newItem = Object.assign({}, item, { amount: 1 });
+    //     post(this.url, newItem).then((res) => {
+    //       if (res.status) {
+    //         this.$store.dispatch("changeBasketItems", {
+    //           item: newItem,
+    //           action: 1,
+    //         });
+    //       }
+    //     });
+    //   } else {
+    //     //find.amount++;
+    //     this.$store.dispatch("changeBasketItems", {
+    //       item: find,
+    //       action: 3,
+    //       amount: 1,
+    //     });
+    //   }
+    // },
     remove(id) {
-      let find = this.items.find((basketItem) => basketItem.productId == id);
+      let find = this.items.find((el) => el.productId == id);
 
       if (find.amount > 1) {
         //find.amount--;
@@ -93,11 +100,11 @@ export default {
       return sum;
     },
     totalItemsBasket() {
-      let qty = 0;
+      let count = 0;
       for (let item of this.items) {
-        qty += item.amount;
+        count += item.amount;
       }
-      return qty;
+      return count;
     },
   },
   async mounted() {
