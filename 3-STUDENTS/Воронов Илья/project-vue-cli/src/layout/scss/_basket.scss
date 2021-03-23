@@ -39,11 +39,11 @@ img {
 }
 
 .basket-drop {
-    display: none;
+    //display: flex;
     flex-direction: column;
     position: absolute;
     width: 300px;
-    height: 0;
+    //height: 0;
     overflow: hidden;
     background-color: #ffffff;
     box-shadow: 0px 10px 10px 1px rgba(0, 0, 0, 0.3);
